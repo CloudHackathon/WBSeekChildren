@@ -13,9 +13,6 @@
 		5F7640451DFBBE8300B77A82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7640431DFBBE8300B77A82 /* Main.storyboard */; };
 		5F7640471DFBBE8300B77A82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7640461DFBBE8300B77A82 /* Assets.xcassets */; };
 		5F76404A1DFBBE8300B77A82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7640481DFBBE8300B77A82 /* LaunchScreen.storyboard */; };
-		5F7640591DFBD4DD00B77A82 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7640581DFBD4DD00B77A82 /* ActionViewController.m */; };
-		5F76405C1DFBD4DD00B77A82 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F76405A1DFBD4DD00B77A82 /* MainInterface.storyboard */; };
-		5F7640601DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5F7640551DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5F76409D1DFBF7EB00B77A82 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F76407C1DFBF7EB00B77A82 /* AFHTTPSessionManager.m */; };
 		5F76409E1DFBF7EB00B77A82 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F76407F1DFBF7EB00B77A82 /* AFNetworkReachabilityManager.m */; };
 		5F76409F1DFBF7EB00B77A82 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7640811DFBF7EB00B77A82 /* AFSecurityPolicy.m */; };
@@ -80,16 +77,6 @@
 		5F7641301DFC982400B77A82 /* WechatIMG79.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76412F1DFC982400B77A82 /* WechatIMG79.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5F76405E1DFBD4DD00B77A82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5F76402F1DFBBE8300B77A82 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5F7640541DFBD4DD00B77A82;
-			remoteInfo = WBSeekChildrenExtension;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		5F7640641DFBD4DD00B77A82 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -97,7 +84,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5F7640601DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,7 +101,6 @@
 		5F7640461DFBBE8300B77A82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F7640491DFBBE8300B77A82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F76404B1DFBBE8300B77A82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F7640551DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WBSeekChildrenExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7640571DFBD4DD00B77A82 /* ActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
 		5F7640581DFBD4DD00B77A82 /* ActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
 		5F76405B1DFBD4DD00B77A82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -240,13 +225,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F7640521DFBD4DD00B77A82 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -263,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				5F7640371DFBBE8300B77A82 /* WBSeekChildren.app */,
-				5F7640551DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,29 +469,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				5F76405F1DFBD4DD00B77A82 /* PBXTargetDependency */,
 			);
 			name = WBSeekChildren;
 			productName = WBSeekChildren;
 			productReference = 5F7640371DFBBE8300B77A82 /* WBSeekChildren.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5F7640541DFBD4DD00B77A82 /* WBSeekChildrenExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5F7640611DFBD4DD00B77A82 /* Build configuration list for PBXNativeTarget "WBSeekChildrenExtension" */;
-			buildPhases = (
-				5F7640511DFBD4DD00B77A82 /* Sources */,
-				5F7640521DFBD4DD00B77A82 /* Frameworks */,
-				5F7640531DFBD4DD00B77A82 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WBSeekChildrenExtension;
-			productName = WBSeekChildrenExtension;
-			productReference = 5F7640551DFBD4DD00B77A82 /* WBSeekChildrenExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -527,13 +486,8 @@
 				TargetAttributes = {
 					5F7640361DFBBE8300B77A82 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = U8N666U5AW;
-						ProvisioningStyle = Automatic;
-					};
-					5F7640541DFBD4DD00B77A82 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = U8N666U5AW;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = X96S8D333M;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -551,7 +505,6 @@
 			projectRoot = "";
 			targets = (
 				5F7640361DFBBE8300B77A82 /* WBSeekChildren */,
-				5F7640541DFBD4DD00B77A82 /* WBSeekChildrenExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -582,14 +535,6 @@
 				5F7640451DFBBE8300B77A82 /* Main.storyboard in Resources */,
 				5F7641011DFC4B8700B77A82 /* h1.jpg in Resources */,
 				5F7640AF1DFC291100B77A82 /* 2.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5F7640531DFBD4DD00B77A82 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F76405C1DFBD4DD00B77A82 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,23 +595,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F7640511DFBD4DD00B77A82 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F7640591DFBD4DD00B77A82 /* ActionViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5F76405F1DFBD4DD00B77A82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5F7640541DFBD4DD00B77A82 /* WBSeekChildrenExtension */;
-			targetProxy = 5F76405E1DFBD4DD00B77A82 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5F7640431DFBBE8300B77A82 /* Main.storyboard */ = {
@@ -790,11 +719,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = U8N666U5AW;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = X96S8D333M;
 				INFOPLIST_FILE = WBSeekChildren/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webank.WBSeekChildren;
+				PRODUCT_BUNDLE_IDENTIFIER = com.webank.wepowernew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "09bb96b9-1fd7-47ca-9d8c-d6eceb201fb8";
+				PROVISIONING_PROFILE_SPECIFIER = wepowernew;
 			};
 			name = Debug;
 		};
@@ -802,35 +734,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = U8N666U5AW;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = X96S8D333M;
 				INFOPLIST_FILE = WBSeekChildren/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webank.WBSeekChildren;
+				PRODUCT_BUNDLE_IDENTIFIER = com.webank.wepowernew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		5F7640621DFBD4DD00B77A82 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = U8N666U5AW;
-				INFOPLIST_FILE = WBSeekChildrenExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webank.WBSeekChildren.WBSeekChildrenExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		5F7640631DFBD4DD00B77A82 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = U8N666U5AW;
-				INFOPLIST_FILE = WBSeekChildrenExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webank.WBSeekChildren.WBSeekChildrenExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				PROVISIONING_PROFILE = "09bb96b9-1fd7-47ca-9d8c-d6eceb201fb8";
+				PROVISIONING_PROFILE_SPECIFIER = wepowernew;
 			};
 			name = Release;
 		};
@@ -851,15 +762,6 @@
 			buildConfigurations = (
 				5F76404F1DFBBE8300B77A82 /* Debug */,
 				5F7640501DFBBE8300B77A82 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5F7640611DFBD4DD00B77A82 /* Build configuration list for PBXNativeTarget "WBSeekChildrenExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5F7640621DFBD4DD00B77A82 /* Debug */,
-				5F7640631DFBD4DD00B77A82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

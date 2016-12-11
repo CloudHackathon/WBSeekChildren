@@ -29,6 +29,8 @@
 }
 - (IBAction)buttonClicked:(id)sender {
     
+    [self.view endEditing:YES];
+
     
     [self dismissViewControllerAnimated:YES completion:^{
         if ([self.delegate respondsToSelector:@selector(WBRegistWithID:name:image:)]) {
