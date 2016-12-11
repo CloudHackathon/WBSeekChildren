@@ -13,6 +13,7 @@
 
 
 @interface WBUploadResultViewController ()<XHRadarViewDataSource, XHRadarViewDelegate>
+
 @property (nonatomic, strong) XHRadarView *radarView;
 @property (nonatomic, strong) NSMutableArray *pointsArray;
 @property (nonatomic, strong) UIButton *resultButton;
@@ -81,12 +82,18 @@
 
 }
 - (void)back{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.delegate respondsToSelector:@selector(backDelegate)]) {
+        [self.delegate backDelegate];
+    }
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)pushToResultViewController{
  
     WBResultImageViewController *reVC = [[WBResultImageViewController alloc]init];
-//    reVC.imageUrls = ???
+    reVC.imageUrls = self.imageUrls;
     [self.navigationController pushViewController:reVC animated:YES];
     
 }
@@ -173,19 +180,26 @@
 }
 
 - (void)netWorking{
-    [[AFHTTPSessionManager manager] POST:@"http://10.66.126.34:8080/upload"
+    [[AFHTTPSessionManager manager] POST:@"http://123.207.234.128:8080/upload"
                               parameters:nil
                constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
          
-         UIImage *_originImage = [UIImage imageNamed:@"WechatIMG79.png"];
+         UIImage *_originImage = self.image;
          
-         NSData *_data = UIImageJPEGRepresentation(_originImage, 1.0f);
+         NSData *_data = UIImageJPEGRepresentation(_originImage, 0.5f);
          
          NSString *_encodedImageStr = [_data base64EncodedStringWithOptions:0];
          
          //        NSLog(@"===Encoded image:\n%@", _encodedImageStr);
          
+         
+         NSString *isKnown = @"";
+         if (self.isKnown) {
+             isKnown = @"yes";
+         }else{
+            isKnown = @"no";
+         }
          
          [formData appendPartWithFormData:[_encodedImageStr dataUsingEncoding:NSUTF8StringEncoding] name:@"image"];
          
@@ -194,7 +208,7 @@
          
          
          [formData appendPartWithFormData:[@"2016/12/11 3:6:53" dataUsingEncoding:NSUTF8StringEncoding] name:@"timestamp"];
-         [formData appendPartWithFormData:[@"no" dataUsingEncoding:NSUTF8StringEncoding] name:@"is_known"];
+         [formData appendPartWithFormData:[isKnown dataUsingEncoding:NSUTF8StringEncoding] name:@"is_known"];
          [formData appendPartWithFormData:[@"422823199204082351" dataUsingEncoding:NSUTF8StringEncoding] name:@"idNo"];
          [formData appendPartWithFormData:[@"remark" dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
          
@@ -207,18 +221,69 @@
          //        dispatch_async(dispatch_get_main_queue(), ^{
          //            [self resultViewButton:6];
          //        });
-         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"responseObject"
-                                                        message:[NSString stringWithFormat:@"%@",responseObject]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"cancle"
-                                              otherButtonTitles:nil,nil];
-         [alert show];
+//         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"responseObject"
+//                                                        message:[NSString stringWithFormat:@"%@",responseObject]
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"cancle"
+//                                              otherButtonTitles:nil,nil];
+//         [alert show];
 
-//         self.imageUrls = ?
+         NSMutableArray *tmp = [NSMutableArray new];
+         
+         NSInteger code = [responseObject[@"code"] integerValue];
+         
+         if (code == 1) {
+             NSLog(@"对比失败，后台无记录，创建一条新的记录");
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"对比失败，后台无记录，数据库中创建一条新的记录"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil,nil];
+             [alert show];
+
+         }else if (code == 2){
+             
+             NSLog(@"对比成功");
+             
+             NSString *image_url = responseObject[@"person_id"][@"image_url"];
+             [tmp addObject:image_url];
+             
+         }else if (code == 3){
+             
+             NSLog(@"上传的照片不包含人脸");
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"人脸比对失败"
+                                                            message:@"上传的照片不包含人脸"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil,nil];
+             [alert show];
+             
+         }else if (code == 0){
+             
+             NSLog(@"注册成功！");
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"注册成功"
+                                                            message:@"请您耐心等候，有相关失踪信息第一时间给您反馈"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil,nil];
+             [alert show];
+             
+         }else{
+             NSLog(@"服务异常");
+             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"服务异常"
+                                                            message:@"服务器返回异常，请重试"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil,nil];
+             [alert show];
+             
+         }
+         
+         self.imageUrls = [NSArray arrayWithArray:tmp];
          
          dispatch_async(dispatch_get_main_queue(), ^{
              
-//             self.childNum = ?
+             self.childNum = self.imageUrls.count;
              
              [self startUpdatingRadar];
          });
@@ -229,7 +294,7 @@
      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          //
          
-         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"error"
+         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"网络请求错误"
                                                         message:[NSString stringWithFormat:@"%@",error]
                                                        delegate:nil
                                               cancelButtonTitle:@"cancle"
@@ -238,7 +303,7 @@
          
          NSLog(@"error:%@",error);
          
-         self.childNum = 5;
+         self.childNum = self.imageUrls.count;
          
          dispatch_async(dispatch_get_main_queue(), ^{
              [self startUpdatingRadar];

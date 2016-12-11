@@ -11,6 +11,9 @@
 @interface WBRegistViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UITextField *idNO;
+@property (weak, nonatomic) IBOutlet UITextField *NSME;
+@property (weak, nonatomic) IBOutlet UITextField *REMARK;
 
 @end
 
@@ -20,18 +23,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.button.layer.cornerRadius = 50.0;
+    self.button.layer.cornerRadius = 10.0;
     
     
 }
 - (IBAction)buttonClicked:(id)sender {
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.delegate respondsToSelector:@selector(WBRegistWithID:name:image:)]) {
+            [self.delegate WBRegistWithID:_idNO.text name:_NSME.text image:nil];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 /*

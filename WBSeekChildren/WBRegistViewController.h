@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WBRegistViewControllerDelegate <NSObject>
+
+- (void)WBRegistWithID:(NSString*)IDNo name:(NSString *)name image:(NSString *)image;
+
+@end
+
 @interface WBRegistViewController : UIViewController
+
+@property (nonatomic,weak)id<WBRegistViewControllerDelegate>delegate;
 
 @end
