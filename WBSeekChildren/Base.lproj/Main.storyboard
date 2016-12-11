@@ -180,8 +180,6 @@
                         <color key="backgroundColor" red="0.32053917646408081" green="0.44390374422073364" blue="0.61004358530044556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="NSME" destination="boh-dK-6D9" id="ru1-bY-mzg"/>
-                        <outlet property="REMARK" destination="0JC-Co-1uJ" id="n13-Ld-5x7"/>
                         <outlet property="button" destination="IeM-Ah-ck7" id="qVJ-Br-xHM"/>
                         <outlet property="idNO" destination="lEo-tC-u7d" id="qxj-9w-qII"/>
                     </connections>

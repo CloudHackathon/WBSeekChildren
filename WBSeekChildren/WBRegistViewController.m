@@ -12,8 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UITextField *idNO;
-@property (weak, nonatomic) IBOutlet UITextField *NSME;
-@property (weak, nonatomic) IBOutlet UITextField *REMARK;
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *remark;
 
 @end
 
@@ -34,7 +34,7 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         if ([self.delegate respondsToSelector:@selector(WBRegistWithID:name:image:)]) {
-            [self.delegate WBRegistWithID:_idNO.text name:_NSME.text image:nil];
+            [self.delegate WBRegistWithID:_idNO.text name:_name.text image:nil];
         }
     }];
 }
