@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *choosePicBtn;
 @property (nonatomic,strong) UIImagePickerController *imagePicker;
 
+@property (nonatomic,strong) UIImage *photeImg;
+
 @property (nonatomic ,assign) BOOL isTakePic;
 @property (nonatomic ,assign) BOOL isChoosePic;
 
@@ -148,7 +150,7 @@
     NSLog(@"-----上传-----");
     WBUploadResultViewController *resultVc = [[WBUploadResultViewController alloc]init];
     
-    resultVc.image = self.picImageView.image;
+    resultVc.image = self.photeImg;
     
     resultVc.isKnown = self.isKnown;
     if (_isKnown) {
@@ -175,6 +177,8 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 //    NSLog(@"info:%@",info);
     
     _picImageView.image = info[UIImagePickerControllerOriginalImage];
+    
+    self.photeImg = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
